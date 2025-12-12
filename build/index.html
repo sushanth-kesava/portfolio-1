@@ -1,0 +1,28 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Responsive Portfolio Builder</title>
+      <script>
+        // Set theme class before app loads to avoid FOUC
+        (function () {
+          try {
+            var stored = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var isDark = stored === 'dark' || (!stored || stored === 'system') && prefersDark;
+            var el = document.documentElement;
+            if (isDark) el.classList.add('dark'); else el.classList.remove('dark');
+          } catch (e) {}
+        })();
+      </script>
+      <script type="module" crossorigin src="/assets/index-k1lkLUze.js"></script>
+      <link rel="stylesheet" crossorigin href="/assets/index-iYTpT7MH.css">
+    </head>
+
+    <body>
+      <div id="root"></div>
+    </body>
+  </html>
+  
