@@ -3,6 +3,7 @@ import { Download, Mail, Github, Linkedin, ArrowDown } from 'lucide-react';
 import { motion } from 'motion/react';
 
 const profileImage = new URL('../../assets/sushanth.jpg', import.meta.url).href;
+const resumePdf = new URL('../../assets/software-2300030795-Kesava-Sushanth.pdf', import.meta.url).href;
 
 interface HeroProps {
   name: string;
@@ -86,8 +87,8 @@ export function Hero({ name, title, tagline, github, linkedin }: HeroProps) {
             className="flex flex-wrap items-center justify-center gap-4 mb-8"
           >
             <a
-              href="src/assets/software-2300030795-Kesava-Sushanth.pdf"
-              download
+              href={resumePdf}
+              download="Kesava-Sushanth-Resume.pdf"
               className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
               aria-label="Download resume"
             >
