@@ -1,7 +1,8 @@
 // Removed React import as it is not used
 import { Download, Mail, Github, Linkedin, ArrowDown } from 'lucide-react';
 import { motion } from 'motion/react';
-import profileImage from '../../assets/sushanth.jpg';
+
+const profileImage = new URL('../assets/sushanth.jpg', import.meta.url).href;
 
 interface HeroProps {
   name: string;
