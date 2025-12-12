@@ -8,6 +8,7 @@ import { Skills } from './src/components/Skills';
 import { Education } from './src/components/Education';
 import { Leadership } from './src/components/Leadership';
 import { Achievements } from './src/components/Achievements';
+import { Certificates } from './src/components/Certificates';
 import { ContactForm } from './src/components/ContactForm';
 import { Footer } from './src/components/Footer';
 import { resumeData } from './src/data/resumeData.ts';
@@ -82,6 +83,8 @@ export default function App() {
         <Leadership leadership={resumeData.leadership} />
 
         <Achievements achievements={resumeData.achievements} />
+
+        <Certificates certificates={resumeData.certificates} />
 
         <ContactForm
           email={resumeData.email}

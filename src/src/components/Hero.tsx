@@ -2,7 +2,7 @@
 import { Download, Mail, Github, Linkedin, ArrowDown } from 'lucide-react';
 import { motion } from 'motion/react';
 
-const profileImage = new URL('../assets/sushanth.jpg', import.meta.url).href;
+const profileImage = new URL('../../assets/sushanth.jpg', import.meta.url).href;
 
 interface HeroProps {
   name: string;
