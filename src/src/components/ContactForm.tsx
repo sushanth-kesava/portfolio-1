@@ -159,15 +159,6 @@ export function ContactForm({ email, phone, location }: ContactFormProps) {
                 </div>
               </div>
             </div>
-
-            {/* Note about Formspree */}
-            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 border border-blue-200 dark:border-blue-800">
-              <p className="text-sm text-gray-700 dark:text-gray-300">
-                <strong>Note:</strong> This form uses a mailto link as a fallback. For production, 
-                you can integrate services like <strong>Formspree</strong>, <strong>EmailJS</strong>, 
-                or your own backend API to handle form submissions.
-              </p>
-            </div>
           </motion.div>
 
           {/* Contact Form */}
