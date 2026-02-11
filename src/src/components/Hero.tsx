@@ -3,7 +3,7 @@ import { Download, Mail, Github, Linkedin, ArrowDown } from 'lucide-react';
 import { motion } from 'motion/react';
 
 const profileImage = new URL('../../assets/sushanth.jpg', import.meta.url).href;
-const resumePdf = new URL('../../assets/software-2300030795-Kesava-Sushanth.pdf', import.meta.url).href;
+const resumePdf = new URL('/Users/kesavasushanth/Downloads/sushanth-Portfolio/src/assets/2300030795.pdf', import.meta.url).href;
 
 interface HeroProps {
   name: string;
