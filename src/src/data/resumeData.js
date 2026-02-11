@@ -23,7 +23,7 @@ export const resumeData = {
       institution: "KL University",
       location: "Vijayawada",
       duration: "Jun 2023 - Present",
-      gpa: "9.12",
+      gpa: "8.93",
       status: "Current"
     },
     {
