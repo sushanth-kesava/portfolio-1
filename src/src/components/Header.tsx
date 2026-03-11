@@ -34,7 +34,7 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-md'
+          ? 'bg-white/80 backdrop-blur-md shadow-md'
           : 'bg-transparent'
       }`}
       role="banner"
@@ -60,7 +60,7 @@ export function Header() {
               <li key={item.id}>
                 <button
                   onClick={() => scrollToSection(item.id)}
-                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="text-slate-700 hover:text-blue-700 transition-colors"
                   aria-label={`Navigate to ${item.label}`}
                 >
                   {item.label}
@@ -73,7 +73,7 @@ export function Header() {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
               aria-label="Toggle mobile menu"
                 aria-expanded={isMobileMenuOpen}
             >
@@ -88,13 +88,13 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 py-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="md:hidden mt-4 py-4 border-t border-slate-200">
             <ul className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <li key={item.id}>
                   <button
                     onClick={() => scrollToSection(item.id)}
-                    className="block w-full text-left py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    className="block w-full text-left py-2 text-slate-700 hover:text-blue-700 transition-colors"
                   >
                     {item.label}
                   </button>

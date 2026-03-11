@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useInView } from 'react-intersection-observer';
 import { ExternalLink, Github, Award, X, Code } from 'lucide-react';
@@ -49,7 +49,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
     <section
       id="projects"
       ref={ref}
-      className="py-20 px-4 bg-white dark:bg-gray-900"
+      className="py-20 px-4 bg-gradient-to-br from-white via-slate-50 to-blue-50"
     >
       <div className="container mx-auto max-w-6xl">
         <motion.div
@@ -58,13 +58,13 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-full mb-4">
-            <Code className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+            <Code className="w-8 h-8 text-blue-700" />
           </div>
-          <h2 className="text-3xl md:text-4xl mb-4 text-gray-900 dark:text-white">
+          <h2 className="text-3xl md:text-4xl mb-4 text-slate-900">
             Featured Projects
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Innovation through code: AI-powered solutions, web applications, and research projects
           </p>
         </motion.div>
@@ -82,8 +82,8 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
               onClick={() => setActiveFilter(filter.id)}
               className={`px-4 py-2 rounded-lg transition-all ${
                 activeFilter === filter.id
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                  ? 'bg-blue-100 text-slate-900 shadow-lg'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
               aria-label={`Filter by ${filter.label}`}
             >
@@ -103,7 +103,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800 dark:to-blue-900/20 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all cursor-pointer group"
+                className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all cursor-pointer group"
                 onClick={() => setSelectedProject(project)}
                 role="button"
                 tabIndex={0}
@@ -117,25 +117,25 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                 {/* Badge */}
                 {project.badge && (
                   <div className="flex items-center gap-2 mb-3">
-                    <Award className="w-4 h-4 text-yellow-600 dark:text-yellow-400" />
-                    <span className="text-sm text-yellow-700 dark:text-yellow-400">
+                    <Award className="w-4 h-4 text-amber-700" />
+                    <span className="text-sm text-amber-800">
                       {project.badge}
                     </span>
                   </div>
                 )}
 
                 {/* Title */}
-                <h3 className="text-xl text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <h3 className="text-xl text-slate-900 mb-2 group-hover:text-blue-700 transition-colors">
                   {project.title}
                 </h3>
 
                 {/* Subtitle */}
-                <p className="text-sm text-blue-600 dark:text-blue-400 mb-3">
+                <p className="text-sm text-blue-700 mb-3">
                   {project.subtitle}
                 </p>
 
                 {/* Description */}
-                <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
+                <p className="text-slate-700 mb-4 line-clamp-3">
                   {project.description}
                 </p>
 
@@ -144,20 +144,20 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                   {project.techStack.slice(0, 3).map((tech, idx) => (
                     <span
                       key={idx}
-                      className="px-2 py-1 bg-white dark:bg-gray-700 text-xs text-gray-700 dark:text-gray-300 rounded"
+                      className="px-2 py-1 bg-white text-xs text-slate-700 rounded"
                     >
                       {tech}
                     </span>
                   ))}
                   {project.techStack.length > 3 && (
-                    <span className="px-2 py-1 bg-white dark:bg-gray-700 text-xs text-gray-500 dark:text-gray-400 rounded">
+                    <span className="px-2 py-1 bg-white text-xs text-slate-500 rounded">
                       +{project.techStack.length - 3}
                     </span>
                   )}
                 </div>
 
                 {/* Duration */}
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-slate-600">
                   {project.duration}
                 </p>
               </motion.div>
@@ -179,13 +179,13 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
-                className="bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8 relative"
+                className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8 relative"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Close button */}
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="absolute top-4 right-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                  className="absolute top-4 right-4 p-2 hover:bg-slate-100 rounded-lg transition-colors"
                   aria-label="Close modal"
                 >
                   <X className="w-6 h-6" />
@@ -194,8 +194,8 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                 {/* Badge */}
                 {selectedProject.badge && (
                   <div className="flex items-center gap-2 mb-4">
-                    <Award className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
-                    <span className="text-yellow-700 dark:text-yellow-400">
+                    <Award className="w-5 h-5 text-amber-700" />
+                    <span className="text-amber-800">
                       {selectedProject.badge}
                       {selectedProject.patentNumber && ` - ${selectedProject.patentNumber}`}
                     </span>
@@ -203,35 +203,35 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                 )}
 
                 {/* Title */}
-                <h3 className="text-3xl text-gray-900 dark:text-white mb-2">
+                <h3 className="text-3xl text-slate-900 mb-2">
                   {selectedProject.title}
                 </h3>
 
                 {/* Subtitle */}
-                <p className="text-lg text-blue-600 dark:text-blue-400 mb-4">
+                <p className="text-lg text-blue-700 mb-4">
                   {selectedProject.subtitle}
                 </p>
 
                 {/* Duration */}
-                <p className="text-gray-600 dark:text-gray-400 mb-6">
+                <p className="text-slate-600 mb-6">
                   {selectedProject.duration}
                 </p>
 
                 {/* Description */}
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                <p className="text-slate-700 mb-6 leading-relaxed">
                   {selectedProject.description}
                 </p>
 
                 {/* Tech Stack */}
                 <div className="mb-6">
-                  <h4 className="text-sm text-gray-900 dark:text-white mb-3">
+                  <h4 className="text-sm text-slate-900 mb-3">
                     Technologies Used
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.techStack.map((tech, idx) => (
                       <span
                         key={idx}
-                        className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg text-sm"
+                        className="px-3 py-1 bg-blue-100 text-blue-700 rounded-lg text-sm"
                       >
                         {tech}
                       </span>
@@ -246,7 +246,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                       href={selectedProject.links.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-slate-900 rounded-lg hover:bg-blue-200 transition-colors"
                     >
                       <ExternalLink className="w-4 h-4" />
                       Live Demo
@@ -257,7 +257,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                       href={selectedProject.links.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition-colors"
                     >
                       <Github className="w-4 h-4" />
                       View Code

@@ -54,7 +54,7 @@ export default function App() {
   // Theme toggle is unused after removing the header icon; kept for future use.
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors">
+    <div className="min-h-screen bg-gradient-to-br from-white via-slate-50 to-blue-50 text-slate-900 transition-colors">
       <Header />
       
       <main>

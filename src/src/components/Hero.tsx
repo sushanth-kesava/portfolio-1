@@ -24,7 +24,7 @@ export function Hero({ name, title, tagline, github, linkedin }: HeroProps) {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center px-4 pt-20 bg-white dark:bg-gray-900"
+      className="min-h-screen flex items-center justify-center px-4 pt-20 bg-gradient-to-br from-white via-slate-50 to-blue-50"
     >
       <div className="container mx-auto max-w-5xl">
         <motion.div
@@ -40,11 +40,11 @@ export function Hero({ name, title, tagline, github, linkedin }: HeroProps) {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mb-8 inline-block"
           >
-            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 p-1">
+            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-blue-600 to-cyan-600 p-1">
               <img
                 src={profileImage}
                 alt={`${name} profile photo`}
-                className="w-full h-full rounded-full object-cover bg-white dark:bg-gray-800"
+                className="w-full h-full rounded-full object-cover bg-white"
               />
             </div>
           </motion.div>
@@ -54,7 +54,7 @@ export function Hero({ name, title, tagline, github, linkedin }: HeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-4xl md:text-6xl lg:text-7xl mb-4 text-gray-900 dark:text-white"
+            className="text-4xl md:text-6xl lg:text-7xl mb-4 text-slate-900"
           >
             {name}
           </motion.h1>
@@ -64,7 +64,7 @@ export function Hero({ name, title, tagline, github, linkedin }: HeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-xl md:text-2xl mb-4 text-gray-700 dark:text-gray-300 max-w-3xl mx-auto"
+            className="text-xl md:text-2xl mb-4 text-slate-700 max-w-3xl mx-auto"
           >
             {title}
           </motion.p>
@@ -74,7 +74,7 @@ export function Hero({ name, title, tagline, github, linkedin }: HeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto"
           >
             {tagline}
           </motion.p>
@@ -89,7 +89,7 @@ export function Hero({ name, title, tagline, github, linkedin }: HeroProps) {
             <a
               href={resumePdf}
               download="Kesava-Sushanth-Resume.pdf"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-100 text-slate-900 rounded-lg hover:bg-blue-200 transition-colors shadow-lg hover:shadow-xl"
               aria-label="Download resume"
             >
               <Download className="w-5 h-5" />
@@ -97,7 +97,7 @@ export function Hero({ name, title, tagline, github, linkedin }: HeroProps) {
             </a>
             <button
               onClick={scrollToContact}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-2 border-gray-900 dark:border-white rounded-lg hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-gray-900 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-900 border-2 border-slate-900 rounded-lg hover:bg-slate-100 hover:text-slate-900 transition-colors"
               aria-label="Go to contact section"
             >
               <Mail className="w-5 h-5" />
@@ -116,7 +116,7 @@ export function Hero({ name, title, tagline, github, linkedin }: HeroProps) {
               href={github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 bg-white dark:bg-gray-800 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors shadow-md hover:shadow-lg"
+              className="p-3 bg-white rounded-full hover:bg-slate-100 transition-colors shadow-md hover:shadow-lg"
               aria-label="Visit GitHub profile"
             >
               <Github className="w-6 h-6" />
@@ -125,7 +125,7 @@ export function Hero({ name, title, tagline, github, linkedin }: HeroProps) {
               href={linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 bg-white dark:bg-gray-800 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors shadow-md hover:shadow-lg"
+              className="p-3 bg-white rounded-full hover:bg-slate-100 transition-colors shadow-md hover:shadow-lg"
               aria-label="Visit LinkedIn profile"
             >
               <Linkedin className="w-6 h-6" />
@@ -143,7 +143,7 @@ export function Hero({ name, title, tagline, github, linkedin }: HeroProps) {
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
-              <ArrowDown className="w-6 h-6 text-gray-400" />
+              <ArrowDown className="w-6 h-6 text-slate-500" />
             </motion.div>
           </motion.div>
         </motion.div>

@@ -1,7 +1,13 @@
-import React from 'react';
 import { motion } from 'motion/react';
 import { useInView } from 'react-intersection-observer';
-import { Code2, Database, Wrench, Brain, Globe, Users } from 'lucide-react';
+import {
+  Code2,
+  Database,
+  Wrench,
+  Brain,
+  Globe,
+  Users,
+} from 'lucide-react';
 
 interface Skill {
   name: string;
@@ -32,7 +38,7 @@ export function Skills({ skills }: SkillsProps) {
       title: 'Programming Languages',
       icon: Code2,
       skills: skills.languages,
-      color: 'blue'
+      color: 'green'
     },
     {
       title: 'Web Development',
@@ -44,7 +50,7 @@ export function Skills({ skills }: SkillsProps) {
       title: 'Databases',
       icon: Database,
       skills: skills.databases,
-      color: 'purple'
+      color: 'green'
     },
     {
       title: 'Machine Learning',
@@ -67,36 +73,42 @@ export function Skills({ skills }: SkillsProps) {
   ];
 
   const getColorClasses = (color: string) => {
-    const colors: Record<string, { bg: string; text: string; progress: string }> = {
+    const colors: Record<string, { bg: string; text: string; progress: string; card: string }> = {
       blue: {
-        bg: 'bg-blue-100 dark:bg-blue-900/30',
-        text: 'text-blue-600 dark:text-blue-400',
-        progress: 'bg-blue-600 dark:bg-blue-400'
+        bg: 'bg-blue-100',
+        text: 'text-blue-700',
+        progress: 'bg-blue-700',
+        card: 'from-slate-50 to-blue-50'
       },
       green: {
-        bg: 'bg-green-100 dark:bg-green-900/30',
-        text: 'text-green-600 dark:text-green-400',
-        progress: 'bg-green-600 dark:bg-green-400'
+        bg: 'bg-teal-100',
+        text: 'text-teal-700',
+        progress: 'bg-teal-600',
+        card: 'from-slate-50 to-teal-50'
       },
       purple: {
-        bg: 'bg-purple-100 dark:bg-purple-900/30',
-        text: 'text-purple-600 dark:text-purple-400',
-        progress: 'bg-purple-600 dark:bg-purple-400'
+        bg: 'bg-blue-100',
+        text: 'text-blue-700',
+        progress: 'bg-slate-400',
+        card: 'from-slate-50 to-blue-50'
       },
       pink: {
-        bg: 'bg-pink-100 dark:bg-pink-900/30',
-        text: 'text-pink-600 dark:text-pink-400',
-        progress: 'bg-pink-600 dark:bg-pink-400'
+        bg: 'bg-teal-100',
+        text: 'text-teal-700',
+        progress: 'bg-teal-600',
+        card: 'from-slate-50 to-teal-50'
       },
       orange: {
-        bg: 'bg-orange-100 dark:bg-orange-900/30',
-        text: 'text-orange-600 dark:text-orange-400',
-        progress: 'bg-orange-600 dark:bg-orange-400'
+        bg: 'bg-amber-100',
+        text: 'text-amber-700',
+        progress: 'bg-amber-600',
+        card: 'from-slate-50 to-amber-50'
       },
       indigo: {
-        bg: 'bg-indigo-100 dark:bg-indigo-900/30',
-        text: 'text-indigo-600 dark:text-indigo-400',
-        progress: 'bg-indigo-600 dark:bg-indigo-400'
+        bg: 'bg-slate-100',
+        text: 'text-slate-700',
+        progress: 'bg-slate-600',
+        card: 'from-slate-50 to-slate-100'
       }
     };
     return colors[color] || colors.blue;
@@ -106,24 +118,27 @@ export function Skills({ skills }: SkillsProps) {
     <section
       id="skills"
       ref={ref}
-      className="py-20 px-4 bg-gradient-to-br from-gray-50 via-white to-purple-50 dark:from-gray-800 dark:via-gray-900 dark:to-purple-900/20"
+      className="py-20 px-4 bg-gradient-to-br from-white via-slate-50 to-blue-50"
     >
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl mb-4 text-gray-900 dark:text-white">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+            <Code2 className="w-8 h-8 text-blue-700" />
+          </div>
+          <h2 className="text-3xl md:text-4xl mb-4 text-slate-900">
             Skills & Expertise
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            A comprehensive toolkit for building innovative solutions
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            A simple overview of the technical and professional skills I use most across development, research, and collaboration.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="space-y-6">
           {skillCategories.map((category, categoryIndex) => {
             const Icon = category.icon;
             const colors = getColorClasses(category.color);
@@ -131,32 +146,36 @@ export function Skills({ skills }: SkillsProps) {
             return (
               <motion.div
                 key={category.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
+                initial={{ opacity: 0, x: -20 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg"
+                className={`bg-gradient-to-br ${colors.card} rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow`}
               >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className={`p-2 ${colors.bg} rounded-lg`}>
-                    <Icon className={`w-6 h-6 ${colors.text}`} />
+                <div className="flex items-center justify-between gap-4 mb-5">
+                  <div className="flex items-center gap-3">
+                    <div className={`p-2 ${colors.bg} rounded-lg`}>
+                      <Icon className={`w-5 h-5 ${colors.text}`} />
+                    </div>
+                    <h3 className="text-xl text-slate-900">
+                      {category.title}
+                    </h3>
                   </div>
-                  <h3 className="text-xl text-gray-900 dark:text-white">
-                    {category.title}
-                  </h3>
+                  <span className="text-sm text-slate-600">{category.skills.length} skills</span>
                 </div>
 
                 <div className="space-y-4">
                   {category.skills.map((skill, index) => (
                     <div key={skill.name}>
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-gray-700 dark:text-gray-300">
+                      <div className="mb-2 flex items-center justify-between gap-3">
+                        <span className="text-slate-900">
                           {skill.name}
                         </span>
                         <span className={`text-sm ${colors.text}`}>
                           {skill.level}%
                         </span>
                       </div>
-                      <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+
+                      <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
                           animate={inView ? { width: `${skill.level}%` } : {}}
