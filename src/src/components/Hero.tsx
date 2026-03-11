@@ -24,8 +24,7 @@ export function Hero({ name, title, tagline, github, linkedin }: HeroProps) {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center px-4 pt-20 bg-gradient-to-br from-white via-white to-gray-50"
-
+      className="min-h-screen flex items-center justify-center px-4 pt-20 bg-white dark:bg-gray-900"
     >
       <div className="container mx-auto max-w-5xl">
         <motion.div
