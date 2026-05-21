@@ -251,8 +251,6 @@ export const resumeData = {
       { name: "Firebase Studio" },
       { name: "X code" },
       { name: "Hostinger" },
-
-
     ],
     ml: [
       { name: "Machine Learning" },
