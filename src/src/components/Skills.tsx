@@ -11,7 +11,6 @@ import {
 
 interface Skill {
   name: string;
-  level: number;
 }
 
 interface SkillsData {
@@ -163,27 +162,14 @@ export function Skills({ skills }: SkillsProps) {
                   <span className="text-sm text-slate-600">{category.skills.length} skills</span>
                 </div>
 
-                <div className="space-y-4">
-                  {category.skills.map((skill, index) => (
-                    <div key={skill.name}>
-                      <div className="mb-2 flex items-center justify-between gap-3">
-                        <span className="text-slate-900">
-                          {skill.name}
-                        </span>
-                        <span className={`text-sm ${colors.text}`}>
-                          {skill.level}%
-                        </span>
-                      </div>
-
-                      <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={inView ? { width: `${skill.level}%` } : {}}
-                          transition={{ duration: 1, delay: categoryIndex * 0.1 + index * 0.05 }}
-                          className={`h-full ${colors.progress} rounded-full`}
-                        />
-                      </div>
-                    </div>
+                <div className="flex flex-wrap gap-3">
+                  {category.skills.map((skill) => (
+                    <span
+                      key={skill.name}
+                      className="px-3 py-1 bg-white text-slate-700 rounded-full text-sm shadow-sm"
+                    >
+                      {skill.name}
+                    </span>
                   ))}
                 </div>
               </motion.div>

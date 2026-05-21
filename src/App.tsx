@@ -10,7 +10,7 @@ import { Leadership } from './src/components/Leadership';
 import { Achievements } from './src/components/Achievements';
 import { ContactForm } from './src/components/ContactForm';
 import { Footer } from './src/components/Footer';
-import { resumeData } from './src/data/resumeData.ts';
+import { resumeData } from './src/data/resumeData.js';
 
 type ThemeMode = 'light' | 'dark' | 'system';
 
@@ -53,48 +53,57 @@ export default function App() {
 
   // Theme toggle is unused after removing the header icon; kept for future use.
 
+  // Cast resume data to any to satisfy TS for optional JS-sourced fields
+  const data: any = resumeData;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-slate-50 to-blue-50 text-slate-900 transition-colors">
       <Header />
       
       <main>
         <Hero
-          name={resumeData.name}
-          title={resumeData.title}
-          tagline={resumeData.tagline}
-          github={resumeData.github}
-          linkedin={resumeData.linkedin}
+          name={data.name}
+          title={data.title}
+          tagline={data.tagline}
+          github={data.github}
+          linkedin={data.linkedin}
         />
 
-        <About summary={resumeData.summary} />
+        <About
+          summary={data.summary}
+          skills={data.skills}
+          achievements={data.achievements}
+          internships={data.internships}
+          education={data.education}
+        />
 
         <ExperienceTimeline
-          internships={resumeData.internships}
-          experience={resumeData.experience}
+          internships={data.internships}
+          experience={data.experience}
         />
 
-        <ProjectsGrid projects={resumeData.projects} />
+        <ProjectsGrid projects={data.projects} />
 
-        <Skills skills={resumeData.skills} />
+        <Skills skills={data.skills} />
 
-        <Education education={resumeData.education} />
+        <Education education={data.education} />
 
-        <Leadership leadership={resumeData.leadership} />
+        <Leadership leadership={data.leadership} />
 
-        <Achievements achievements={resumeData.achievements} />
+        <Achievements achievements={data.achievements} />
 
         <ContactForm
-          email={resumeData.email}
-          phone={resumeData.phone}
-          location={resumeData.location}
+          email={data.email}
+          phone={data.phone}
+          location={data.location}
         />
       </main>
 
       <Footer
-        name={resumeData.name}
-        email={resumeData.email}
-        github={resumeData.github}
-        linkedin={resumeData.linkedin}
+        name={data.name}
+        email={data.email}
+        github={data.github}
+        linkedin={data.linkedin}
       />
     </div>
   );

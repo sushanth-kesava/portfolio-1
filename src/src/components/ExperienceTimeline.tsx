@@ -116,7 +116,11 @@ export function ExperienceTimeline({ internships, experience }: ExperienceTimeli
 
         <div className="relative">
           {allExperiences.map((item, index) => (
-            <TimelineItem key={item.id} item={item} index={index} />
+            <TimelineItem
+              key={`${item.type ?? 'experience'}-${item.id}-${index}`}
+              item={item}
+              index={index}
+            />
           ))}
         </div>
       </div>

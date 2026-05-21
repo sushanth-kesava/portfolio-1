@@ -15,8 +15,10 @@ interface Project {
   badge?: string | null;
   patentNumber?: string;
   links: {
-    demo: string | null;
-    github: string | null;
+    frontend?: string | null;
+    backend?: string | null;
+    demo?: string | null;
+    github?: string | null;
   };
 }
 
@@ -31,19 +33,12 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
   });
 
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [activeFilter, setActiveFilter] = useState<string>('all');
 
-  const filters = [
-    { id: 'all', label: 'All Projects' },
-    { id: 'ml', label: 'ML/AI' },
-    { id: 'frontend', label: 'Frontend' },
-    { id: 'backend', label: 'Backend' },
-    { id: 'research', label: 'Research' }
-  ];
 
-  const filteredProjects = activeFilter === 'all'
-    ? projects
-    : projects.filter(project => project.type.includes(activeFilter));
+
+
+
+
 
   return (
     <section
@@ -69,33 +64,11 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
           </p>
         </motion.div>
 
-        {/* Filter Tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-2 mb-12"
-        >
-          {filters.map((filter) => (
-            <button
-              key={filter.id}
-              onClick={() => setActiveFilter(filter.id)}
-              className={`px-4 py-2 rounded-lg transition-all ${
-                activeFilter === filter.id
-                  ? 'bg-blue-100 text-slate-900 shadow-lg'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-              }`}
-              aria-label={`Filter by ${filter.label}`}
-            >
-              {filter.label}
-            </button>
-          ))}
-        </motion.div>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, index) => (
+            {projects.map((project, index) => (
               <motion.div
                 key={project.id}
                 layout
@@ -103,7 +76,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all cursor-pointer group"
+                className="relative bg-gradient-to-br from-slate-50 to-blue-50 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all cursor-pointer group"
                 onClick={() => setSelectedProject(project)}
                 role="button"
                 tabIndex={0}
@@ -123,6 +96,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                     </span>
                   </div>
                 )}
+
 
                 {/* Title */}
                 <h3 className="text-xl text-slate-900 mb-2 group-hover:text-blue-700 transition-colors">
@@ -240,16 +214,27 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                 </div>
 
                 {/* Links */}
-                <div className="flex gap-4">
-                  {selectedProject.links.demo && (
+                <div className="flex flex-wrap gap-4">
+                  {selectedProject.links.frontend && (
                     <a
-                      href={selectedProject.links.demo}
+                      href={selectedProject.links.frontend}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-slate-900 rounded-lg hover:bg-blue-200 transition-colors"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-pink-100 text-red-600 border border-pink-500 rounded-lg hover:bg-pink-200 transition-colors"
                     >
                       <ExternalLink className="w-4 h-4" />
-                      Live Demo
+                      Frontend Live
+                    </a>
+                  )}
+                  {selectedProject.links.backend && (
+                    <a
+                      href={selectedProject.links.backend}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-pink-100 text-red-600 border border-pink-500 rounded-lg hover:bg-pink-200 transition-colors"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Backend Live
                     </a>
                   )}
                   {selectedProject.links.github && (
@@ -260,7 +245,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                       className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition-colors"
                     >
                       <Github className="w-4 h-4" />
-                      View Code
+                      GitHub Repo Here
                     </a>
                   )}
                 </div>
