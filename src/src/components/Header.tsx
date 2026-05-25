@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
+const profileImage = new URL('../../assets/sushanth.jpg', import.meta.url).href;
+
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -48,7 +50,7 @@ export function Header() {
               aria-label="Go to homepage"
             >
               <img
-              src="src/assets/sushanth.jpg"
+              src={profileImage}
               alt="Profile"
               className="w-8 h-8 rounded-full object-cover" // Reduced size
               />
